@@ -14,10 +14,10 @@ class CreateContactNotesTable extends Migration
     public function up()
     {
         Schema::create('contact_notes', function (Blueprint $table) {
-            $table->increments('note_id');
+            $table->increments('id');
 
             $table->integer('contact_id')->unsigned()->index()->nullable();
-            $table->foreign('contact_id')->references('contact_id')->on('contacts')->onDelete('cascade');;
+            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');;
 
             $table->string('notes');
 

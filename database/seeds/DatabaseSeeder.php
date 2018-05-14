@@ -15,9 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-    	// Delete all records from the Contact database
-    	Contact::truncate();
-
     	$faker = \Faker\Factory::create();
 
         // And now, let's create a few contacts with some notes in our database:
@@ -25,9 +22,9 @@ class DatabaseSeeder extends Seeder
             $contact = Contact::create(['name' => $faker->name]);
             $contact_notes = [];
 
-            for($j = 0; $j < 5: j++){
+            for($j = 0; $j < 5; $j++){
             	$contact_note = ContactNote::create(['notes' => $faker->sentence]);
-            	array_push($contact_notes, $contact_note)
+            	array_push($contact_notes, $contact_note);
             }
 
             $contact->notes()->saveMany($contact_notes);
