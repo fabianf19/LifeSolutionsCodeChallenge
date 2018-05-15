@@ -12,12 +12,6 @@ class ContactController extends Controller
     /**
 		* Retrieves all contacts from the database with their contacts
 		*
-		* A *description*, that can span multiple lines, to go _in-depth_ into the details of this element
-		* and to provide some background information or textual references.
-		*
-		* @param string $myArgument With a *description* of this argument, these may also
-		*    span multiple lines.
-		*
 		* @return array of type Contact with 
 	*/
     public function index()
@@ -33,11 +27,11 @@ class ContactController extends Controller
     }
  
  	/**
-		* Retrieves a specific contact from the database with 
+		* Retrieves a specific contact from the database with their notes
 		*
-		* @param int $id The contact_id 
+		* @param int $id The contact_id for the contact to find and show their notes
 		*
-		* @return void
+		* @return The contact with their notes; 404 not found error otherwise
 	*/
     public function show($id){
         
@@ -52,10 +46,25 @@ class ContactController extends Controller
         }
     }
 
+    /**
+		* Creates a new contact with the request parameters
+		*
+		* @param Request $request The request object
+		*
+		* @return The created contact
+	*/
     public function store(Request $request){
         return Contact::create($request->all());
     }
 
+	/**
+		* Updates a contact with the request parameters
+		*
+		* @param int $id The contact id
+		* @param Request $request The request object
+		*
+		* @return The updated contact; 404 not found error otherwise
+	*/    
     public function update(Request $request, $id){
         $contact = Contact::find($id);
 
@@ -68,6 +77,14 @@ class ContactController extends Controller
         return $contact;
     }
 
+    /**
+		* Deletes a contact with the request parameters
+		*
+		* @param int $id The contact id
+		* @param Request $request The request object
+		*
+		* @return 204 success code; 404 not found error otherwise
+	*/ 
     public function delete(Request $request, $id){
         $contact = contact::find($id);
 
@@ -86,6 +103,14 @@ class ContactController extends Controller
 	// --------------------------------------------------------------------------------------------------------
 	// --------------------------------------------------------------------------------------------------------
 
+    /**
+		* Get all of the notes from a contact with the request parameters
+		*
+		* @param int $id The contact id
+		* @param Request $request The request object
+		*
+		* @return The contact notes; 404 not found error otherwise
+	*/ 
     public function contact_notes(Request $request, $id){
     	$contact = Contact::find($id);
 
@@ -96,6 +121,14 @@ class ContactController extends Controller
         return $contact->notes;
     }
 
+    /**
+		* Create a note for a contact with the request parameters
+		*
+		* @param int $id The contact id
+		* @param Request $request The request object
+		*
+		* @return The created note; 404 not found error otherwise
+	*/ 
     public function create_note_contact(Request $request, $id){
 		$contact = Contact::find($id);
 
@@ -111,6 +144,15 @@ class ContactController extends Controller
 		return $note;
     }
 
+    /**
+		* Updates a note with the request parameters
+		*
+		* @param int $id_contact The contact id
+		* @param int $id_note The note id
+		* @param Request $request The request object
+		*
+		* @return The updated note; 404 not found error otherwise
+	*/ 
     public function update_note(Request $request, $id_contact, $id_note){
     	// This query could also be directly searched via relationships, similar to
     	// $contact_notes = ContactNote::find($id_note)->where('id_contact','=',$id_contact)->get();
@@ -141,6 +183,15 @@ class ContactController extends Controller
         return $found_note;
     }
 
+    /**
+		* Deletes a note with the request parameters
+		*
+		* @param int $id_contact The contact id
+		* @param int $id_note The note id
+		* @param Request $request The request object
+		*
+		* @return 204 success code if deletion; 404 not found error otherwise
+	*/ 
     public function delete_note(Request $request, $id_contact, $id_note){
     	$contact = Contact::find($id_contact);
 
@@ -168,6 +219,13 @@ class ContactController extends Controller
         return 204;
     }
 
+    /**
+		* Deletes a note with specific note_id
+		*
+		* @param int $id_note The note id
+		*
+		* @return 204 success code if deletion; 404 not found error otherwise
+	*/ 
     public function delete_note_id(Request $request, $id_note){
     	$note = ContactNote::find($id_note);
 
