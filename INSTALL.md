@@ -14,9 +14,12 @@ Submitter: Fabian Fuenmayor
 
 1. Start by initializing your database server, in this case I used MAMP (v4.2) for the project
 	
-	You must also create the database and edit the `.env` file for such configuration
+	You must also create the database and edit the `.env.use_this_one` file for such configuration
 
-2. Edit `.env` file and setup the apropiate connections to your database
+2. Edit `.env.use_this_one` file and setup the apropiate connections to your database
+
+	Remove the `use_this_one` extension so that the file is simply name: `.env`
+
 3. Create migrations required for the project
 
 	Run the following command: `php artisan migrate`
