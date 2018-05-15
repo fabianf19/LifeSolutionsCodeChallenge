@@ -24,3 +24,7 @@ Submitter: Fabian Fuenmayor
 4. (Optional) If you wish, you may seed the database with random records for testing
 
 	Run the following command: `php artisan db:seed` as in this case only one class is required to run the seeder
+
+5. Run the command `php artisan serve` to start the application
+6. Go to route: `http://127.0.0.1/` to see the working code challenge!
+
