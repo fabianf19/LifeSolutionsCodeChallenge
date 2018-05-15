@@ -28,3 +28,4 @@ Submitter: Fabian Fuenmayor
 5. Run the command `php artisan serve` to start the application
 6. Go to route: `http://127.0.0.1/` to see the working code challenge!
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/212ad6a471aaae9f4844)
