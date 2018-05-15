@@ -160,6 +160,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // add smarty extension
+        \Ytake\LaravelSmarty\SmartyServiceProvider::class, 
+        // add artisan commands  
+        \Ytake\LaravelSmarty\SmartyConsoleServiceProvider::class,
     ],
 
     /*

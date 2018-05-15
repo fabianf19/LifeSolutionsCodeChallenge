@@ -27,7 +27,9 @@ class ContactController extends Controller
         	$contact['notes'] = $contact->notes;
         }
 
-        return $all_contacts;
+        $dict = array('data' => $all_contacts );
+
+        return $dict;
     }
  
  	/**
