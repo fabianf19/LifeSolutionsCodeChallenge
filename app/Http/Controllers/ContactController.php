@@ -167,4 +167,16 @@ class ContactController extends Controller
 
         return 204;
     }
+
+    public function delete_note_id(Request $request, $id_note){
+    	$note = ContactNote::find($id_note);
+
+        if (sizeof($note) == 0){
+        	return response('No contact note with that specific id found', 404);
+        }
+
+        $note->delete();
+
+        return 204;
+    }
 }

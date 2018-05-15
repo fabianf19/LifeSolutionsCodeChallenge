@@ -44,3 +44,5 @@ Route::post('contacts/{id}/notes', 'ContactController@create_note_contact');
 Route::put('contacts/{id_contact}/notes/{id_note}', 'ContactController@update_note');
 // Delete a note from the contact with specific id
 Route::delete('contacts/{id_contact}/notes/{id_note}', 'ContactController@delete_note');
+// Delete a note with specific id
+Route::delete('notes/{id_note}', 'ContactController@delete_note_id');
